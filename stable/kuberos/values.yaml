@@ -82,3 +82,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Extra volumes, usually used to add things like CA certificates or other required files.
+extraVolumes: []
+
+# Extra volume mounts, used in concert with extraVolumes.
+extraVolumeMounts: []

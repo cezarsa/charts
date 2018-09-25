@@ -49,6 +49,9 @@ spec:
           - mountPath: /cfg/secret
             name: secret
             subPath: oidcSecret
+{{- if .Values.extraVolumeMounts }}
+{{ toYaml .Values.extraVolumeMounts | indent 10 }}
+{{- end }}
       volumes:
       - name: template
         configMap:
@@ -56,6 +59,9 @@ spec:
       - name: secret
         secret:
           secretName: {{ template "kuberos.name" . }}-secret
+{{- if .Values.extraVolumes }}
+{{ toYaml .Values.extraVolumes | indent 6 }}
+{{- end }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
